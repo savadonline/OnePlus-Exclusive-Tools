@@ -26,7 +26,6 @@
     <InstallUrl>http://oneplusexclusive.com/optools/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>newversion.htm</WebPage>
-    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -54,10 +53,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>DB3A7CA78959281A728A384CAE2F18069E45E45F</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>652F6E2F0AFED15CC32D1AE34577CB6FDBB3F344</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OnePlus-Exclusive-Tools_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>OnePlus Exclusive Tools_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -66,6 +65,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AndroidLib">
+      <HintPath>..\..\..\..\Downloads\AndroidLib\AndroidLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -99,7 +101,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="OnePlus-Exclusive-Tools_TemporaryKey.pfx" />
+    <None Include="OnePlus Exclusive Tools_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
