@@ -39,7 +39,8 @@ namespace OnePlus_Exclusive_Tools
                 serial = android.ConnectedDevices[0];
                 device = android.GetConnectedDevice(serial);
                 this.label1.Text = device.SerialNumber;
-                this.label2.Text = device.Battery.Level.ToString();
+                AdbCommand adbCmd = Adb.FormAdbCommand(device, "-s 1b3e1bca shell getprop ro.product.model");
+                this.label2.Text = adbCmd.ToString();
             }
             else
             {
