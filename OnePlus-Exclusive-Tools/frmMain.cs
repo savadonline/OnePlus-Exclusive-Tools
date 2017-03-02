@@ -38,13 +38,14 @@ namespace OnePlus_Exclusive_Tools
             {
                 serial = android.ConnectedDevices[0];
                 device = android.GetConnectedDevice(serial);
-                this.label1.Text = device.SerialNumber;
-                AdbCommand adbCmd = Adb.FormAdbCommand(device, "-s 1b3e1bca shell getprop ro.product.model");
-                this.label2.Text = adbCmd.ToString();
+                lblAdb.Visible = true;
+                lblAdb.ForeColor = Color.Green;
+                this.lblAdb.Text = "ADB Device Found";
             }
             else
             {
-                this.label1.Text = "Error - No Devices Connected";
+                lblAdb.ForeColor = Color.Red;
+                this.lblAdb.Text = "No ADB Device Connected";
             }
         }
 
@@ -53,5 +54,43 @@ namespace OnePlus_Exclusive_Tools
             //ALWAYS remember to call this when you're done with AndroidController.  It removes used resources
             android.Dispose();
         }
+
+        private void btnReboot_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.UseShellExecute = false;
+            startInfo.RedirectStandardOutput = true;
+            startInfo.FileName = "CMD.exe";
+            startInfo.Arguments = "/c adb reboot-bootloader";
+            process.StartInfo = startInfo;
+            process.Start();
+            process.WaitForExit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string serial;
+
+            //Always call UpdateDeviceList() before using AndroidController on devices to get the most updated list
+            android.UpdateDeviceList();
+
+            if (android.HasConnectedDevices)
+            {
+                serial = android.ConnectedDevices[0];
+                device = android.GetConnectedDevice(serial);
+                this.lblFastboot.Text = device.SerialNumber;
+            }
+            else
+            {
+                this.lblAdb.Text = "Error - No Devices Connected";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"cmd.exe", @"/k fastboot oem device-info");
+        }
+
     }
 }
