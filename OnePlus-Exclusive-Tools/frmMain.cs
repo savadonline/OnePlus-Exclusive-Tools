@@ -38,9 +38,9 @@ namespace OnePlus_Exclusive_Tools
             {
                 serial = android.ConnectedDevices[0];
                 device = android.GetConnectedDevice(serial);
-                lblAdb.Visible = true;
                 lblAdb.ForeColor = Color.Green;
                 this.lblAdb.Text = "ADB Device Found";
+                btnReboot.Enabled = true;
             }
             else
             {
@@ -79,11 +79,13 @@ namespace OnePlus_Exclusive_Tools
             {
                 serial = android.ConnectedDevices[0];
                 device = android.GetConnectedDevice(serial);
-                this.lblFastboot.Text = device.SerialNumber;
+                lblFastboot.ForeColor = Color.Green;
+                this.lblFastboot.Text = "Fastboot Device Found";
             }
             else
             {
-                this.lblAdb.Text = "Error - No Devices Connected";
+                lblFastboot.ForeColor = Color.Red;
+                this.lblFastboot.Text = "No Fastboot Device Connected";
             }
         }
 
